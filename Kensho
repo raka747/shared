@@ -310,3 +310,62 @@ ii.	https://www.analyticsvidhya.com/blog/2016/09/40-interview-questions-asked-at
 23.	Metrics:  Precision, Recall, F1-Score, Confusion Matrix
 24.	VIF:  variance inflation factor is the ratio of variance in a model with multiple terms, divided by the variance of a model with one term alone.[1] It quantifies the severity of multicollinearity in an ordinary least squares regression analysis.
 25.	Regression can be enhanced by using along with DTrees (Trick To Enhance Power Of Regression Model using Decision Trees.pdf) in /BD/ folder (https://www.analyticsvidhya.com/blog/2013/10/trick-enhance-power-regression-model-2/)
+
+
+Highlighted in RED: Potential new topics
+
+
+
+
+1.	Why is the mutation rate in genetic algorithms very small? (old topic)
+As you probably know, we should always accomplish a proper balance between exploration and exploitation ability of the searching/optimiser algorithm. Exploration (simply but not precisely) means searching search space as much as possible, while exploitation means concentrating on one point (hopefully the global optimum).
+
+In GA, mutation operators are mostly used to provide exploration and cross-over operators are widely used to lead population to converge on one the good solutions find so far (exploitation). Consequently, while cross-over tries to converge to a specific point in landscape, mutation does its best to avoid convergence and explore more areas. 
+
+Obviously, we prefer to explore much more in the beginning of the search process (to ensure the population coverage and diversity). On the other hand, we prefer more exploitations at the end of search process to ensure the convergence of the population to the global optimum. There is just an exception; when population converges to a local optimum, we should (if we can) increase the population diversity to explore other areas.
+
+According to the above facts, too high mutation rate increases the probability of searching more areas in search space, however, prevents population to converge to any optimum solution. On the other hand, too small mutation rate may result to premature convergence (falling to local optima instead of global optimum).In other words, too high mutation rate reduces the search ability of GA to a simple (and dummy!) random walk while a too small GA (without any other facilities such as niching or crowd-avoiding to preserve diversity) almost always fails to a local optimum. 
+
+As Larry Raisanen mentioned, the best value of mutation rate is very problem specific. You can try several values in linear or bidirectional manner. Remember, as Colin Reeves wrote, this value also depends on the nature and implementation of the algorithm. In my opinion, however, there is no constant best mutation rate for most of the real world problems. As I mentioned before, searching algorithm demands different exploration-exploitation ability in different stage of the search process. Hence, a more dynamic mutation rate, as Paulo Gaspar proposed, is more preferred. I believe you can find more complex methods which adaptively tune the mutation rate according to the problem and the state of the current population comparing with the previous ones. 
+https://www.researchgate.net/post/Why_is_the_mutation_rate_in_genetic_algorithms_very_small
+
+2.	What is the difference between Maximum Likelihood Estimation & Gradient Descent?
+
+https://stats.stackexchange.com/questions/183871/what-is-the-difference-between-maximum-likelihood-estimation-gradient-descent
+It is called stochastic because the derivative based on a randomly chosen single example is a random approximation to the true derivative based on all the training data. 
+(very useful information about Stochastic Gradient in the below pdf)
+http://cseweb.ucsd.edu/~elkan/250B/logreg.pdf
+
+
+3.	how do you choose an algorithm based on number of features and number of observations
+https://stats.stackexchange.com/questions/10423/number-of-features-vs-number-of-observations
+
+few cases:
+a.	n > m; feature selection/extraction/regularization
+b.	n < m; create/add new features
+
+•	Curse of dimensionality: when predictors (n) >> observations (m)
+o	Few methods
+	AIC, BIC
+	Assessing importance of features using cross-validation
+	Ridge, lasso or elastic net for Regularization.
+•	Elastic net is better than ridge and lasso (i.e L1 and L2) <review this later – separate topic for 3 regression methods>
+•	Regularization is a way of penalizing your objective function for higher number of features.
+                     To get an idea about regularization:
+                                    http://statweb.stanford.edu/~tibs/sta305files/Rudyregularization.pdf
+
+•	https://datascience.stackexchange.com/questions/11390/any-rules-of-thumb-on-number-of-features-versus-number-of-instances-small-da- 
+o	uncorrelated features, N-1 features for N observations; 
+o	if correlation increases, then number of features required approaches SQRT(N).
+-	interesting paper mentioned in the above link. 
+
+•	Feature Selection Vs Feature Extraction: (we need a text based prep for this)
+o	We could try various different feature selection algorithms (e.g., selecting by variance or by greedy search: sequential backward/forward selection, genetic algorithms, etc.)
+o	Feature extraction: compress feature space to a lower-dimensional subspace.
+	Interesting: PCA to reduce number of features; what if data is not a linear problem?
+	Try to think interms of Kernel SVM. There is something called kernel PCA
+
+Feature selection in SVM's <various kernels>
+  https://www.researchgate.net/post/Is_it_necessary_to_do_feature_selection_before_classification_by_SVM_algorithm
+
+Feature Selection: General Topic (not related to any standard algo) ;we have to find a textbook
