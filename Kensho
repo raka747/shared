@@ -369,3 +369,8 @@ Feature selection in SVM's <various kernels>
   https://www.researchgate.net/post/Is_it_necessary_to_do_feature_selection_before_classification_by_SVM_algorithm
 
 Feature Selection: General Topic (not related to any standard algo) ;we have to find a textbook
+
+Gini Index:
+http://dni-institute.in/blogs/wp-content/uploads/2015/07/Gini-Index1.png
+Gini Imdex- only for binary splits
+used in CART
