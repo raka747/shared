@@ -1,0 +1,79 @@
+---
+title: "Risk_HW4"
+output: pdf_document
+---
+
+```{r}
+library(dplyr)
+setwd('/Volumes/IMP/Term 3/RISK')
+
+customer_info <- read.csv('creditcard.csv', header = TRUE)
+
+#Part - (A)  
+#### Cleaning the data ###
+# 1. remove age < 18
+# 2. create log(share) column
+# 3. Replace yes with 1 and No with 0 in Card column
+
+customer_info <- customer_info %>% filter(age > 18) %>% mutate(log_share = log(share))
+customer_info <- customer_info %>% mutate(card = ifelse(card == "yes", 1, 0))
+
+### Logit & Probit Regressions ###
+
+Logit <- glm (card ~ income + reports + log_share, family = binomial(link = "logit"), data = customer_info)
+
+Probit <- glm (card ~ income + reports + log_share, family = binomial(link = "probit"), data = customer_info)
+
+
+## Test case with $30,000 income, (1,2) derogatory reports and expenditure 0.001, 0.01 of annual income
+
+###Case 1:
+income = 3
+report = 1
+log_share = log(0.001)
+case1 = data.frame(income = income, reports = report, log_share = log_share)
+Logit_case1 = predict(Logit,case1, type = "response")
+Probit_case1 = predict(Probit,case1, type = "response")
+print("Case 1 results")
+print(Logit_case1)
+print(Probit_case1)
+
+###Case 2:
+report2 = 2
+case2 = data.frame(income = income, reports = report2, log_share)
+Logit_case2 = predict(Logit,case2, type = "response")
+Probit_case2 = predict(Probit,case2, type = "response")
+print("Case 2 results")
+print(Logit_case2)
+print(Probit_case2)
+Effect_logit = Logit_case2 - Logit_case1
+Effect_Probit = Probit_case2 - Probit_case1
+
+###Case 3 & 4:
+log_share2 = log(0.01)
+case3 = data.frame(income = income, reports = report, log_share2)
+case4 = data.frame(income = income, reports = report2, log_share2)
+Logit_case3 = predict(Logit,case3, type = "response")
+Logit_case4 = predict(Logit,case4, type = "response")
+Probit_case3 = predict(Probit,case3, type = "response")
+Probit_case4 = predict(Probit,case4, type = "response")
+print("Case 3 results")
+print(Logit_case3)
+print(Probit_case3)
+print("Case 4 results")
+print(Logit_case4)
+print(Probit_case4)
+Effect_logit_ = Logit_case4 - Logit_case3
+Effect_Probit_ = Probit_case4 - Probit_case3
+
+
+print("Effects of additional report on case 1")
+print(Effect_logit)
+print(Effect_Probit)
+
+print("Effects of additional report on case 3")
+print(Effect_logit_)
+print(Effect_Probit_)
+
+```
+
