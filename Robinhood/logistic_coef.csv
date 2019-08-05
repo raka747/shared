@@ -1,0 +1,10 @@
+﻿Var,Coef,StdErr,z_score
+Male,1.45,0.09,15.81
+Female,-2.11,0.1,-21.95
+Ln_Equity_value,-0.109,0.041,-2.63
+Age,-0.013,0.0096,-1.4
+Age_Sq,0.0001,0.00009,1.52
+Sectortrades,1.77,0.33,5.37
+CompanyY,2.07,0.399,5.18
+CompanyZ,-0.872,0.437,-2.01
+Constan,1.2,0.484,2.48
