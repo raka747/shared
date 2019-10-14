@@ -1,0 +1,35 @@
+m0,move
+ok
+m1,scan
+grass,grass,grass,grass,crater,grass,grass,grass
+m0,scan
+crater,grass,grass,grass,crater,empty,grass,grass
+m1,steer,northwest
+ok
+m0,steer,east
+ok
+m1,pass
+ok
+m0,scan
+crater,grass,grass,grass,crater,empty,grass,grass
+m1,move
+ok
+m0,steer,southeast
+ok
+m1,pass
+ok
+m0,steer,south
+ok
+m1,scan
+grass,grass,grass,empty,grass,crater,mower,crater
+m0,move
+crash
+m1,scan
+grass,grass,grass,empty,grass,crater,empty,crater
+m1,move
+crash
+grass cut
+grass cut
+grass cut
+grass cut
+20,17,4,8

@@ -1,0 +1,21 @@
+m0,scan
+grass,grass,grass,grass,grass,grass,grass,grass
+m0,steer,northeast
+ok
+m0,steer,northeast
+ok
+m0,move
+ok
+m0,scan
+grass,grass,grass,grass,grass,empty,grass,grass
+m0,move
+ok
+m0,move
+ok
+m0,move
+crash
+grass cut
+grass cut
+grass cut
+grass cut
+40,40,4,8
